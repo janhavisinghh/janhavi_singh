@@ -8,6 +8,7 @@ class TrueCallerUpdate : Update<TrueCallerModel, TrueCallerEvent, TrueCallerEffe
     override fun update(model: TrueCallerModel, event: TrueCallerEvent): Next<TrueCallerModel, TrueCallerEffect> {
         return when (event) {
             TrueCallerUrlButtonClicked -> dispatch(setOf(HitTrueCallerUrl as TrueCallerEffect))
+            HitUrlFailed -> dispatch(setOf(ShowHitUrlFailedErrorMessage as TrueCallerEffect))
         }
     }
 }
