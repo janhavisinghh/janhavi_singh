@@ -1,7 +1,6 @@
 package com.truecaller.janhavi_singh
 
-import com.spotify.mobius.test.NextMatchers.hasEffects
-import com.spotify.mobius.test.NextMatchers.hasNoModel
+import com.spotify.mobius.test.NextMatchers.*
 import com.spotify.mobius.test.UpdateSpec
 import com.spotify.mobius.test.UpdateSpec.assertThatNext
 import org.junit.Test
@@ -30,6 +29,19 @@ class TrueCallerUpdateTest {
                 assertThatNext(
                     hasNoModel(),
                     hasEffects(ShowHitUrlFailedErrorMessage as TrueCallerEffect)
+                )
+            )
+    }
+
+    @Test
+    fun `when truecaller url hit succeeds, then save response as plain text and display data`() {
+        val urlResponse = "<p> Hello this is a test string </p>"
+        updateSpec.given(init.hitUrlSuccessful())
+            .whenEvent(HitUrlSuccessful(urlResponse) as TrueCallerEvent)
+            .then(
+                assertThatNext(
+                    hasModel(init.hitUrlSuccessful().saveUrlResponse(urlResponse)),
+                    hasEffects(ShowSuccessfulResponseData(urlResponse) as TrueCallerEffect)
                 )
             )
     }
