@@ -4,16 +4,19 @@ import com.spotify.mobius.Connectable
 import com.spotify.mobius.Connection
 import com.spotify.mobius.functions.Consumer
 
-class TrueCallerEffectHandler : Connectable<TrueCallerEffect, TrueCallerEvent> {
+class TrueCallerEffectHandler(private val viewActions: TrueCallerViewActions) :
+    Connectable<TrueCallerEffect, TrueCallerEvent> {
     override fun connect(output: Consumer<TrueCallerEvent>): Connection<TrueCallerEffect> {
         return object : Connection<TrueCallerEffect> {
             override fun accept(value: TrueCallerEffect) {
-                TODO("not implemented")
+                when (value) {
+                    is ShowHitUrlFailedErrorMessage ->
+                        viewActions.showHitUrlFailedErrorMessage()
+                }
             }
 
             override fun dispose() {
             }
         }
     }
-
 }
