@@ -25,7 +25,7 @@ class TrueCallerEffectHandlerTest {
     }
 
     @Test
-    fun `when truecaller url hit is failed, then show error message`() {
+    fun `notify user if url hit fails`() {
         connection.accept(ShowHitUrlFailedErrorMessage)
         verify(viewActions).showHitUrlFailedErrorMessage()
     }

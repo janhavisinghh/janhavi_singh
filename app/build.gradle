@@ -38,4 +38,10 @@ dependencies {
 
     //mockito
     testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0"
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.5.0'
+
+    //retrofit scalars converter
+    implementation 'com.squareup.retrofit2:converter-scalars:2.5.0'
 }
