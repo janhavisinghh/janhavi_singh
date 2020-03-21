@@ -10,10 +10,7 @@ class TrueCallerUpdate : Update<TrueCallerModel, TrueCallerEvent, TrueCallerEffe
         return when (event) {
             TrueCallerUrlButtonClicked -> dispatch(setOf(HitTrueCallerUrl as TrueCallerEffect))
             HitUrlFailed -> dispatch(setOf(ShowHitUrlFailedErrorMessage as TrueCallerEffect))
-            is HitUrlSuccessful -> next(
-                model.saveUrlResponse(event.trueCallerUrlResponse),
-                setOf(ShowSuccessfulResponseData(event.trueCallerUrlResponse) as TrueCallerEffect)
-            )
+            is HitUrlSuccessful -> next(model.hitUrlSuccessful(event.trueCallerUrlResponse))
         }
     }
 }

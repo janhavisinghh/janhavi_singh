@@ -34,14 +34,14 @@ class TrueCallerUpdateTest {
     }
 
     @Test
-    fun `when truecaller url hit succeeds, then save response as plain text and display data`() {
+    fun `when truecaller url hit succeeds, then save response in the model`() {
         val urlResponse = "<p> Hello this is a test string </p>"
-        updateSpec.given(init.hitUrlSuccessful())
+        updateSpec.given(init)
             .whenEvent(HitUrlSuccessful(urlResponse) as TrueCallerEvent)
             .then(
                 assertThatNext(
-                    hasModel(init.hitUrlSuccessful().saveUrlResponse(urlResponse)),
-                    hasEffects(ShowSuccessfulResponseData(urlResponse) as TrueCallerEffect)
+                    hasModel(init.hitUrlSuccessful(urlResponse)),
+                    hasNoEffects()
                 )
             )
     }

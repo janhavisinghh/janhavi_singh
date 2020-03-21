@@ -12,11 +12,7 @@ data class TrueCallerModel(val networkCallStatus: NetworkCallStatus?, val trueCa
         return copy(networkCallStatus = FAILED)
     }
 
-    fun hitUrlSuccessful(): TrueCallerModel {
-        return copy(networkCallStatus = SUCCESSFUL)
-    }
-
-    fun saveUrlResponse(trueCallerUrlResponse: String?): TrueCallerModel {
-        return copy(trueCallerUrlResponse = trueCallerUrlResponse)
+    fun hitUrlSuccessful(trueCallerUrlResponse: String?): TrueCallerModel {
+        return copy(networkCallStatus = SUCCESSFUL, trueCallerUrlResponse = trueCallerUrlResponse)
     }
 }
