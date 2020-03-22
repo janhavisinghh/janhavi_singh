@@ -1,7 +1,7 @@
 package com.truecaller.janhavi_singh
 
 interface TrueCallerView {
-    fun displayTenthCharRequest(tenthCharResponse: String)
+    fun displayTenthCharRequest(tenthCharResponse: Char)
     fun displayEveryTenthCharRequest(everyTenthCharResponse: String)
     fun displayWordCounterRequest(wordCounterResponse: String)
 }

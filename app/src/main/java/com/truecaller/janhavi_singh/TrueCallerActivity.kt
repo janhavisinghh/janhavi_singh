@@ -76,8 +76,8 @@ class TrueCallerActivity : AppCompatActivity(), TrueCallerView, TrueCallerViewAc
         }
     }
 
-    override fun displayTenthCharRequest(tenthCharResponse: String) {
-        binding!!.tenthCharTextView.text = tenthCharResponse
+    override fun displayTenthCharRequest(tenthCharResponse: Char) {
+        binding!!.tenthCharTextView.text = tenthCharResponse.toString()
     }
 
     override fun displayEveryTenthCharRequest(everyTenthCharResponse: String) {
