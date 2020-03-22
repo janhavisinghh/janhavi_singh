@@ -1,6 +1,5 @@
 package com.truecaller.janhavi_singh
 
-import android.util.Log
 import com.spotify.mobius.Connectable
 import com.spotify.mobius.Connection
 import com.spotify.mobius.functions.Consumer
@@ -34,7 +33,6 @@ class TrueCallerEffectHandler(
 
     private fun hitTrueCallerUrl(output: Consumer<TrueCallerEvent>) {
         val trueCallerUrl = "https://truecaller.blog/"
-        val trueCallerUrlResponse: String? = null
 
         //Retrofit Client Instance
         val retrofit = Retrofit.Builder()
@@ -50,7 +48,7 @@ class TrueCallerEffectHandler(
             override fun onResponse(call: Call<String>, response: Response<String>) {
                 if (response.isSuccessful) {
                     val responseString = response.body()
-                    Log.d("Retrofit Call", "Hello Janhavi$responseString")
+                    output.accept(HitUrlSuccessful(responseString!!))
                 }
 
             }
@@ -59,11 +57,5 @@ class TrueCallerEffectHandler(
                 output.accept(HitUrlFailed)
             }
         })
-
-        trueCallerUrlResponse?.let {
-            output.accept(HitUrlSuccessful(it))
-        }?.run {
-            output.accept(HitUrlFailed)
-        }
     }
 }

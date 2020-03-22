@@ -8,7 +8,7 @@ class TrueCallerViewRenderer(private val trueCallerView: TrueCallerView) {
     private val dummyStringForTest: String = "This is for testing"
 
     fun render(model: TrueCallerModel) {
-        model.trueCallerUrlResponse?.let {
+        if (model.networkCallStatus == NetworkCallStatus.SUCCESSFUL && model.trueCallerUrlResponse != null) {
             tenthCharRequestResponse = tenthCharRequest()
             everyTenthCharResponse = everyTenthCharRequest()
             wordCounterRequestResponse = wordCounterRequest()
