@@ -1,9 +1,15 @@
 package com.truecaller.janhavi_singh
 
+import android.os.Parcelable
 import com.truecaller.janhavi_singh.NetworkCallStatus.FAILED
 import com.truecaller.janhavi_singh.NetworkCallStatus.SUCCESSFUL
+import kotlinx.android.parcel.Parcelize
 
-data class TrueCallerModel(val networkCallStatus: NetworkCallStatus?, val trueCallerUrlResponse: String?) {
+@Parcelize
+data class TrueCallerModel(
+    val networkCallStatus: NetworkCallStatus?,
+    val trueCallerUrlResponse: String?
+) : Parcelable {
     companion object {
         val INIT = TrueCallerModel(null, null)
     }
