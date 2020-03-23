@@ -17,7 +17,7 @@
                 android:padding="5dp"
                 android:layout_margin="20dp"
                 android:layout_weight="1"/>
-        <android.support.v4.widget.NestedScrollView
+        <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="5dp"
@@ -30,8 +30,8 @@
                     tools:text="Hello World!"
                     android:textAlignment="center"
             />
-        </android.support.v4.widget.NestedScrollView>
-        <android.support.v4.widget.NestedScrollView
+        </androidx.core.widget.NestedScrollView>
+        <androidx.core.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:padding="5dp"
@@ -44,7 +44,7 @@
                     tools:text="Hello World!"
                     android:textAlignment="center"
             />
-        </android.support.v4.widget.NestedScrollView>
+        </androidx.core.widget.NestedScrollView>
         <Button
                 android:id="@+id/hitUrlButton"
                 android:layout_width="match_parent"

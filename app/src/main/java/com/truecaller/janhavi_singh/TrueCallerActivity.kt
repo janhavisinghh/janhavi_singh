@@ -1,10 +1,10 @@
 package com.truecaller.janhavi_singh
 
-import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.os.PersistableBundle
-import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
 import com.spotify.mobius.Connectable
 import com.spotify.mobius.Connection
 import com.spotify.mobius.Mobius
