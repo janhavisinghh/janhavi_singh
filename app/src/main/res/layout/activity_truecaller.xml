@@ -12,7 +12,7 @@
                 android:id="@+id/tenthCharTextView"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="Hello World!"
+                tools:text="Hello World!"
                 android:textAlignment="center"
                 android:padding="5dp"
                 android:layout_margin="20dp"
@@ -27,24 +27,29 @@
                     android:id="@+id/everyTenthCharTextView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:text="Hello World!"
+                    tools:text="Hello World!"
                     android:textAlignment="center"
             />
         </android.support.v4.widget.NestedScrollView>
-        <TextView
-                android:id="@+id/wordCounterTextView"
+        <android.support.v4.widget.NestedScrollView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="Hello World!"
-                android:textAlignment="center"
                 android:padding="5dp"
                 android:layout_margin="20dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1">
+            <TextView
+                    android:id="@+id/wordCounterTextView"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    tools:text="Hello World!"
+                    android:textAlignment="center"
+            />
+        </android.support.v4.widget.NestedScrollView>
         <Button
                 android:id="@+id/hitUrlButton"
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:text="Hit TrueCaller Url"
+                android:text="@string/hit_url"
                 android:layout_margin="50dp"
                 android:layout_weight="0.5"/>
     </LinearLayout>

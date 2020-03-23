@@ -5,19 +5,20 @@ class TrueCallerViewRenderer(private val trueCallerView: TrueCallerView) {
     private var tenthCharRequestResponse: Char? = null
     private var everyTenthCharResponse: String? = null
     private var wordCounterRequestResponse: String? = null
-    private val dummyStringForTest: String = "This is for testing"
+    private var trueCallerResponse: String = ""
+
 
     fun render(model: TrueCallerModel) {
         if (model.networkCallStatus == NetworkCallStatus.SUCCESSFUL) {
-            model.trueCallerUrlResponse?.let {
-                tenthCharRequestResponse = tenthCharRequest(it[10])
-                everyTenthCharResponse = everyTenthCharRequest(it)
-                wordCounterRequestResponse = wordCounterRequest()
+            trueCallerResponse = model.trueCallerUrlResponse!!
+            tenthCharRequestResponse = tenthCharRequest(trueCallerResponse[10])
+            everyTenthCharResponse = everyTenthCharRequest(trueCallerResponse)
+            wordCounterRequestResponse = wordCounterRequest(trueCallerResponse)
 
-                tenthCharRequestResponse?.let { it -> trueCallerView.displayTenthCharRequest(it) }
-                everyTenthCharResponse?.let { it -> trueCallerView.displayEveryTenthCharRequest(it) }
-                wordCounterRequestResponse?.let { it -> trueCallerView.displayWordCounterRequest(it) }
-            }
+            tenthCharRequestResponse?.let { it -> trueCallerView.displayTenthCharRequest(it) }
+            everyTenthCharResponse?.let { it -> trueCallerView.displayEveryTenthCharRequest(it) }
+            wordCounterRequestResponse?.let { it -> trueCallerView.displayWordCounterRequest(it) }
+
         }
     }
 
@@ -35,7 +36,34 @@ class TrueCallerViewRenderer(private val trueCallerView: TrueCallerView) {
         return everyTenthChar
     }
 
-    private fun wordCounterRequest(): String? {
-        return dummyStringForTest
+    private fun wordCounterRequest(responseString: String): String? {
+        val delimiters = Regex("\\s+|,\\s*|\\.\\s*")
+        val words: List<String> = responseString.split(delimiters)
+        val uniqueWords: ArrayList<String> = ArrayList()
+        val uniqueWordsCounter: ArrayList<Int> = ArrayList()
+        var resultString: String? = null
+
+        for (word in words) {
+            val wordIsRepeated = checkIfWordIsUnique(word, uniqueWords)
+            if (wordIsRepeated == -1) {
+                uniqueWords.add(word)
+                uniqueWordsCounter.add(1)
+            } else {
+                uniqueWordsCounter[wordIsRepeated] += 1
+            }
+        }
+
+        for (i in 0 until uniqueWords.size) {
+            resultString += "${uniqueWords[i]} -> occurred ${uniqueWordsCounter[i]} times\n"
+        }
+        return resultString
+    }
+
+    private fun checkIfWordIsUnique(word: String, uniqueWords: ArrayList<String>): Int {
+        for (i in 0 until uniqueWords.size) {
+            if (word == uniqueWords[i])
+                return i
+        }
+        return -1
     }
 }
