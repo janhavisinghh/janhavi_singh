@@ -32,6 +32,7 @@ class TrueCallerActivity : AppCompatActivity(), TrueCallerView, TrueCallerViewAc
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_truecaller)
 
+
         if (savedInstanceState != null) {
             val model = savedInstanceState.getParcelable(KEY_MODEL) ?: TrueCallerModel.INIT
             controller.replaceModel(model)

@@ -27,10 +27,10 @@ class TrueCallerViewRenderer(private val trueCallerView: TrueCallerView) {
     }
 
     private fun everyTenthCharRequest(responseString: String): String? {
-        var everyTenthChar = " "
+        var everyTenthChar = ""
         var n = 10
         while (n < responseString.length) {
-            everyTenthChar = "$everyTenthChar " + responseString[n]
+            everyTenthChar += """The $n th character is .. ${responseString[n]}""" + "\n"
             n += 10
         }
         return everyTenthChar
@@ -41,7 +41,7 @@ class TrueCallerViewRenderer(private val trueCallerView: TrueCallerView) {
         val words: List<String> = responseString.split(delimiters)
         val uniqueWords: ArrayList<String> = ArrayList()
         val uniqueWordsCounter: ArrayList<Int> = ArrayList()
-        var resultString: String? = null
+        var resultString = ""
 
         for (word in words) {
             val wordIsRepeated = checkIfWordIsUnique(word, uniqueWords)
@@ -54,7 +54,11 @@ class TrueCallerViewRenderer(private val trueCallerView: TrueCallerView) {
         }
 
         for (i in 0 until uniqueWords.size) {
-            resultString += "${uniqueWords[i]} -> occurred ${uniqueWordsCounter[i]} times\n"
+            resultString += "'${uniqueWords[i]}' occurred ${uniqueWordsCounter[i]} "
+            resultString += if (uniqueWordsCounter[i] == 1)
+                "time\n"
+            else
+                "times\n"
         }
         return resultString
     }

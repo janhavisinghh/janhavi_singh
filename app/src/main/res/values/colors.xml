@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorOnBackground">#212121</color>
+    <color name="lightGrey1">#424242</color>
+    <color name="lightGrey2">#F5F5F5</color>
+    <color name="twitBlue1">#1dcaff</color>
+    <color name="twitBlue2">#00aced</color>
+    <color name="twitBlue3">#0084b4</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 </resources>
